@@ -31,8 +31,16 @@ function Navbar() {
     <header className={cn(uiTokens.navbar.shell, isScrolled ? uiTokens.navbar.solid : uiTokens.navbar.transparent)}>
       <Container className="flex items-center justify-between py-4">
         <Link to={routes.home} className={uiTokens.navbar.brand}>
-          <span className={uiTokens.navbar.brandTitle}>Noor Bistro</span>
-          <span className={uiTokens.navbar.brandMeta}>Gulshan, Dhaka</span>
+          <span className="group inline-flex flex-col leading-none">
+            <span className="font-display text-[1.75rem] text-brand-wine sm:text-[1.95rem]">
+              Noor <span className="text-brand-red">Bestro</span>
+            </span>
+            <span className="mt-1 flex w-full items-center gap-1.5" aria-hidden="true">
+              <span className="h-px flex-1 bg-brand-wine/35 transition-colors duration-500 group-hover:bg-brand-wine/55" />
+              <span className="h-1.5 w-1.5 rounded-full bg-brand-red" />
+              <span className="h-px flex-1 bg-brand-wine/25 transition-colors duration-500 group-hover:bg-brand-wine/45" />
+            </span>
+          </span>
         </Link>
 
         <nav className={uiTokens.navbar.nav}>
