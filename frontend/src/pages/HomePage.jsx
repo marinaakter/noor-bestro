@@ -1,4 +1,4 @@
-import { ArrowRight, Clock3, MapPin, Sparkles } from "lucide-react";
+import { ArrowRight, CakeSlice, Clock3, Fish, GlassWater, MapPin, Soup, UtensilsCrossed } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -46,6 +46,34 @@ const guestNotes = [
     title: "Family celebration guest",
     image: "https://images.unsplash.com/photo-1544148103-0773bf10d330",
     imageAlt: "Shared restaurant table with premium dishes"
+  }
+];
+
+const signatureCategories = [
+  {
+    title: "Rice & Biryani",
+    copy: "Celebratory rice dishes with rich aromas and layered spice.",
+    icon: Soup,
+    accent: "bg-brand-blush/35 text-brand-wine"
+  },
+  {
+    title: "Seafood",
+    copy: "Premium prawn and fish dishes with Bengal-inspired character.",
+    icon: Fish,
+    accent: "bg-brand-teal/25 text-brand-wine"
+  },
+  {
+    title: "Signature Mains",
+    copy: "Slow-cooked meats, grills, and polished comforting plates.",
+    icon: UtensilsCrossed,
+    accent: "bg-brand-red/10 text-brand-red"
+  },
+  {
+    title: "Desserts & Drinks",
+    copy: "Firni, lassi, borhani, and gentle sweet finishes.",
+    icon: CakeSlice,
+    secondaryIcon: GlassWater,
+    accent: "bg-brand-card text-brand-wine"
   }
 ];
 
@@ -120,95 +148,66 @@ function HomePage() {
         </Container>
       </section>
 
-      <section className="section-shell bg-brand-alt bg-section-wash">
-        <Container className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+      <section className="bg-brand-alt bg-section-wash py-10 sm:py-12 lg:py-14">
+        <Container className="grid items-center gap-6 lg:grid-cols-[1.15fr_0.85fr]">
           <div>
             <SectionHeading
               eyebrow="Our Story"
-              title="A modern restaurant experience rooted in hospitality, detail, and restraint."
-              description="Noor Bistro was imagined as a place for long conversations, family celebrations, and memorable dining moments. Our menu respects familiar Bangladeshi flavors while presenting them with polish and quiet confidence."
+              title="Modern dining rooted in warm hospitality."
+              description="Noor Bistro brings familiar Bangladeshi flavors into a polished room for long conversations, family celebrations, and graceful meals."
             />
-            <div className="mt-8">
+            <div className="mt-4">
               <Link to={routes.about} className="editorial-link">
                 Read Our Story
                 <ArrowRight size={16} />
               </Link>
             </div>
           </div>
-          <div className="visual-frame">
+          <div className="visual-frame h-56 sm:h-64 lg:h-60">
             <img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8" alt="Refined dining table at Noor Bistro" className="h-full w-full object-cover" />
           </div>
         </Container>
       </section>
 
-      <section className="section-shell">
-        <Container>
-          <SectionHeading
-            eyebrow="Why Choose Noor"
-            title="A setting shaped for refined meals, private moments, and attentive service."
-            description="Everything is designed to feel composed and welcoming, from the flow of service to the lighting, plating, and sense of comfort at the table."
-            align="center"
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {[
-              {
-                title: "Curated Menu",
-                copy: "Signature Bangladeshi and globally inspired dishes, selected for balance, richness, and occasion."
-              },
-              {
-                title: "Warm Hospitality",
-                copy: "Service that feels attentive and personal without ever becoming intrusive."
-              },
-              {
-                title: "Elegant Ambiance",
-                copy: "Soft lighting, comfortable seating, and a calm atmosphere tailored for long evenings."
-              },
-              {
-                title: "Private Dining Feel",
-                copy: "Ideal for family gatherings, business lunches, and celebrations that require a polished setting."
-              }
-            ].map((feature) => (
-              <article key={feature.title} className="premium-card p-8 sm:p-9">
-                <div className="mb-6 inline-flex rounded-full bg-brand-teal/20 p-3.5 text-brand-wine">
-                  <Sparkles size={18} />
-                </div>
-                <h3 className="text-[1.95rem] leading-tight">{feature.title}</h3>
-                <p className="mt-4 text-sm leading-8 text-brand-text/90">{feature.copy}</p>
-              </article>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="section-shell bg-brand-alt bg-section-wash">
+      <section className="bg-brand-alt bg-section-wash py-12 sm:py-14 lg:py-16">
         <Container>
           <SectionHeading
             eyebrow="Signature Categories"
-            title="From celebratory rice dishes to seafood and graceful finishes."
-            description="Explore the range that defines Noor Bistro: generous rice plates, premium seafood, deeply comforting mains, and desserts that close the evening beautifully."
+            title="Signature categories, served simply."
+            description="Rice plates, seafood, comforting mains, and sweet chilled finishes."
           />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {[
-              ["Rice & Biryani", "Celebratory rice dishes with rich aromas and layered spice."],
-              ["Seafood", "Premium prawn and fish dishes with Bengal-inspired character."],
-              ["Signature Mains", "Slow-cooked meats, grills, and polished comforting plates."],
-              ["Desserts & Drinks", "Firni, lassi, borhani, and gentle sweet finishes."]
-            ].map(([title, copy]) => (
-              <article key={title} className="premium-card p-8 sm:p-9">
-                <h3 className="text-[1.9rem] leading-tight">{title}</h3>
-                <p className="mt-4 text-sm leading-8 text-brand-text/90">{copy}</p>
+          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {signatureCategories.map(({ title, copy, icon: Icon, secondaryIcon: SecondaryIcon, accent }) => (
+              <article key={title} className="premium-card group p-5">
+                <div className="flex items-start justify-between gap-4">
+                  <div className={`inline-flex h-12 w-12 items-center justify-center rounded-[1rem] shadow-[0_10px_18px_rgba(31,31,31,0.05)] ${accent}`}>
+                    <Icon size={22} strokeWidth={1.8} />
+                  </div>
+                  {SecondaryIcon ? (
+                    <div className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-brand-border bg-brand-alt text-brand-wine transition-transform duration-500 group-hover:-translate-y-1">
+                      <SecondaryIcon size={15} strokeWidth={1.9} />
+                    </div>
+                  ) : null}
+                </div>
+                <div className="mt-5 h-px w-10 bg-brand-red/35 transition-all duration-500 group-hover:w-16" />
+                <h3 className="mt-4 text-[1.42rem] leading-tight">{title}</h3>
+                <p className="mt-2 min-h-[3.8rem] text-[0.82rem] leading-6 text-brand-text/90">{copy}</p>
+                <Link to={routes.menu} className="mt-4 inline-flex items-center gap-2 text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-brand-wine transition-all duration-300 group-hover:gap-3">
+                  View Menu
+                  <ArrowRight size={14} />
+                </Link>
               </article>
             ))}
           </div>
         </Container>
       </section>
 
-      <section className="section-shell">
+      <section className="relative overflow-hidden py-14 sm:py-16 lg:py-20">
         <Container>
           <SectionHeading
             eyebrow="Guest Notes"
-            title="Guest notes that move through the moments guests remember most."
-            description="A rotating collection of warm words from celebrations, business dinners, and long evenings shaped by attentive service."
+            title="Guest notes moving through memorable evenings."
+            description="Warm words from celebrations, business dinners, and long meals shaped by attentive service."
           />
           <GuestNotesCarousel notes={guestNotes} />
         </Container>
@@ -237,43 +236,35 @@ function HomePage() {
         </Container>
       </section>
 
-      <section className="section-shell">
+      <section className="py-12 sm:py-14 lg:py-16">
         <Container>
-          <div className="rounded-[2.25rem] bg-brand-wine px-6 py-10 text-brand-light shadow-lift sm:px-10 lg:px-14 lg:py-16">
-            <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-              <div>
-                <span className="mb-4 inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-brand-light/80">
-                  Reserve Your Table
-                </span>
-                <h2 className="font-display text-4xl text-brand-light sm:text-5xl">
-                  Plan an evening of refined dining in the heart of Gulshan.
+          <div className="rounded-[1.75rem] bg-brand-wine px-5 py-6 text-brand-light shadow-lift sm:px-7 lg:px-9">
+            <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
+              <div className="max-w-3xl">
+                <span className="text-xs font-semibold uppercase tracking-[0.22em] text-brand-light/70">Reserve Your Table</span>
+                <h2 className="mt-2 font-display text-3xl leading-tight text-brand-light sm:text-4xl">
+                  Plan a refined evening in Gulshan.
                 </h2>
-                <p className="mt-4 max-w-2xl text-base leading-7 text-brand-light/80">
-                  Whether you are arranging a quiet dinner, hosting visiting guests, or celebrating with family, our team is ready to make the experience feel seamless.
+                <p className="mt-3 text-sm leading-7 text-brand-light/78 sm:text-base">
+                  Book a calm table for dinner, visiting guests, or a family celebration.
                 </p>
-                <div className="mt-8">
-                  <Button as={Link} to={routes.reservation} className="bg-brand-light text-brand-wine hover:bg-brand-alt">
-                    Book Now
-                  </Button>
-                </div>
               </div>
 
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="rounded-[1.5rem] border border-white/20 bg-white/10 p-5">
-                  <div className="flex items-start gap-3">
-                    <MapPin size={18} className="mt-1" />
-                    <div>
-                      <h3 className="text-lg text-brand-light">Location</h3>
-                      <p className="mt-2 text-sm leading-7 text-brand-light/75">{siteConfig.location}</p>
+              <div className="flex flex-col gap-4 lg:items-end">
+                <Button as={Link} to={routes.reservation} className="min-h-[2.9rem] bg-brand-light px-6 text-brand-wine hover:bg-brand-alt">
+                  Book Now
+                </Button>
+                <div className="grid gap-3 sm:grid-cols-2 lg:w-[31rem]">
+                  <div className="rounded-[1.1rem] border border-white/18 bg-white/10 px-4 py-3">
+                    <div className="flex items-start gap-3">
+                      <MapPin size={16} className="mt-1 shrink-0" />
+                      <p className="text-xs leading-6 text-brand-light/75">{siteConfig.location}</p>
                     </div>
                   </div>
-                </div>
-                <div className="rounded-[1.5rem] border border-white/20 bg-white/10 p-5">
-                  <div className="flex items-start gap-3">
-                    <Clock3 size={18} className="mt-1" />
-                    <div>
-                      <h3 className="text-lg text-brand-light">Hours</h3>
-                      <p className="mt-2 text-sm leading-7 text-brand-light/75">
+                  <div className="rounded-[1.1rem] border border-white/18 bg-white/10 px-4 py-3">
+                    <div className="flex items-start gap-3">
+                      <Clock3 size={16} className="mt-1 shrink-0" />
+                      <p className="text-xs leading-6 text-brand-light/75">
                         Sun - Thu: {siteConfig.hours.weekdays}
                         <br />
                         Fri - Sat: {siteConfig.hours.weekends}
