@@ -9,7 +9,7 @@ import Container from "../components/common/Container";
 import ErrorState from "../components/common/ErrorState";
 import Loader from "../components/common/Loader";
 import SectionHeading from "../components/common/SectionHeading";
-import TestimonialCard from "../components/home/TestimonialCard";
+import GuestNotesCarousel from "../components/home/GuestNotesCarousel";
 import PageTransition from "../components/layout/PageTransition";
 import MenuCard from "../components/menu/MenuCard";
 import { routes } from "../constants/routes";
@@ -17,6 +17,37 @@ import { siteConfig } from "../constants/siteConfig";
 import { fallbackGallery } from "../data/fallbackGallery";
 import { fadeUp, staggerWrap } from "../lib/motion";
 import { normalizeError } from "../utils/normalizeError";
+
+const guestNotes = [
+  {
+    quote: "Every course arrived with a quiet confidence, and the team made our family dinner feel beautifully personal.",
+    name: "Farzana Rahman",
+    title: "Weekend guest from Gulshan",
+    image: "https://images.unsplash.com/photo-1559339352-11d035aa65de",
+    imageAlt: "Guests enjoying an elegant restaurant dinner"
+  },
+  {
+    quote: "Noor kept the warmth of Bangladeshi flavor but served it with the polish I want for an important business dinner.",
+    name: "Tariq Ahmed",
+    title: "Business dinner host",
+    image: "https://images.unsplash.com/photo-1519671282429-b44660ead0a7",
+    imageAlt: "Refined table setting with plated dishes"
+  },
+  {
+    quote: "The room felt calm, the service was thoughtful, and our birthday evening moved at exactly the right pace.",
+    name: "Nadia Karim",
+    title: "Birthday reservation guest",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0",
+    imageAlt: "Warm restaurant table prepared for a celebration"
+  },
+  {
+    quote: "The seafood and kacchi were memorable, but what stayed with us was how effortless the whole evening felt.",
+    name: "Rehan Chowdhury",
+    title: "Family celebration guest",
+    image: "https://images.unsplash.com/photo-1544148103-0773bf10d330",
+    imageAlt: "Shared restaurant table with premium dishes"
+  }
+];
 
 function HomePage() {
   const [featuredItems, setFeaturedItems] = useState([]);
@@ -176,14 +207,10 @@ function HomePage() {
         <Container>
           <SectionHeading
             eyebrow="Guest Notes"
-            title="A dining experience remembered for care, comfort, and depth of flavor."
-            description="Noor Bistro is designed for guests who want more than a meal. The setting, service, and pace all work together to make evenings feel intentional."
+            title="Guest notes that move through the moments guests remember most."
+            description="A rotating collection of warm words from celebrations, business dinners, and long evenings shaped by attentive service."
           />
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            <TestimonialCard quote="From the welcome to dessert, everything felt calm, polished, and deeply considered." name="Farzana Rahman" title="Weekend guest from Gulshan" />
-            <TestimonialCard quote="The menu felt premium without losing the warmth of familiar Bangladeshi flavors." name="Tariq Ahmed" title="Business dinner host" />
-            <TestimonialCard quote="A beautiful room for family celebrations, with service that quietly understands the occasion." name="Nadia Karim" title="Birthday reservation guest" />
-          </div>
+          <GuestNotesCarousel notes={guestNotes} />
         </Container>
       </section>
 
