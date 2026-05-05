@@ -1,4 +1,4 @@
-import { ArrowRight, CakeSlice, Clock3, Fish, GlassWater, MapPin, Soup, UtensilsCrossed } from "lucide-react";
+import { ArrowRight, CakeSlice, Clock3, Fish, GlassWater, MapPin, Phone, Soup, UtensilsCrossed } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -240,37 +240,39 @@ function HomePage() {
         <Container>
           <div className="rounded-[1.75rem] bg-brand-wine px-5 py-6 text-brand-light shadow-lift sm:px-7 lg:px-9">
             <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
-              <div className="max-w-3xl">
-                <span className="text-xs font-semibold uppercase tracking-[0.22em] text-brand-light/70">Reserve Your Table</span>
-                <h2 className="mt-2 font-display text-3xl leading-tight text-brand-light sm:text-4xl">
-                  Plan a refined evening in Gulshan.
+              <div className="max-w-2xl">
+                <div className="flex items-center gap-3">
+                  <span className="h-px w-10 bg-brand-light/25" />
+                  <span className="text-xs font-semibold uppercase tracking-[0.22em] text-brand-light/70">Reserve Your Table</span>
+                </div>
+                <h2 className="mt-3 font-display text-3xl leading-tight text-brand-light sm:text-4xl">
+                  A quiet table, ready when you are.
                 </h2>
-                <p className="mt-3 text-sm leading-7 text-brand-light/78 sm:text-base">
-                  Book a calm table for dinner, visiting guests, or a family celebration.
+                <p className="mt-2 max-w-xl text-sm leading-7 text-brand-light/75">
+                  Dinner, guests, or a small celebration. Tell us the time, and we will shape the evening with care.
                 </p>
               </div>
 
-              <div className="flex flex-col gap-4 lg:items-end">
-                <Button as={Link} to={routes.reservation} className="min-h-[2.9rem] bg-brand-light px-6 text-brand-wine hover:bg-brand-alt">
-                  Book Now
-                </Button>
-                <div className="grid gap-3 sm:grid-cols-2 lg:w-[31rem]">
-                  <div className="rounded-[1.1rem] border border-white/18 bg-white/10 px-4 py-3">
-                    <div className="flex items-start gap-3">
-                      <MapPin size={16} className="mt-1 shrink-0" />
-                      <p className="text-xs leading-6 text-brand-light/75">{siteConfig.location}</p>
+              <div className="rounded-[1.35rem] border border-white/15 bg-white/[0.08] p-3 lg:w-[32rem]">
+                <div className="grid gap-3 sm:grid-cols-[1fr_auto] sm:items-center">
+                  <div className="grid gap-2">
+                    <div className="flex items-center gap-2 text-xs leading-5 text-brand-light/75">
+                      <MapPin size={15} className="shrink-0 text-brand-light/80" />
+                      <span>{siteConfig.location}</span>
                     </div>
-                  </div>
-                  <div className="rounded-[1.1rem] border border-white/18 bg-white/10 px-4 py-3">
-                    <div className="flex items-start gap-3">
-                      <Clock3 size={16} className="mt-1 shrink-0" />
-                      <p className="text-xs leading-6 text-brand-light/75">
-                        Sun - Thu: {siteConfig.hours.weekdays}
-                        <br />
-                        Fri - Sat: {siteConfig.hours.weekends}
-                      </p>
+                    <div className="flex items-center gap-2 text-xs leading-5 text-brand-light/75">
+                      <Clock3 size={15} className="shrink-0 text-brand-light/80" />
+                      <span>{siteConfig.hours.weekdays} daily rhythm</span>
                     </div>
+                    <a href={`tel:${siteConfig.phone}`} className="flex items-center gap-2 text-xs leading-5 text-brand-light/80 hover:text-brand-light">
+                      <Phone size={15} className="shrink-0" />
+                      <span>{siteConfig.phone}</span>
+                    </a>
                   </div>
+
+                  <Button as={Link} to={routes.reservation} className="min-h-[2.9rem] bg-brand-light px-6 text-brand-wine hover:bg-brand-alt">
+                    Book Now
+                  </Button>
                 </div>
               </div>
             </div>
